@@ -46,7 +46,8 @@
     "lucide-react": "^0.468.0",
     "react-day-picker": "^9.4.0",
     "embla-carousel-react": "^8.5.2",
-    "recharts": "^2.15.0"
+    "recharts": "^2.15.0",
+    "cmdk": "^1.0.0"
   },
   "devDependencies": {
     "typescript": "^5",
