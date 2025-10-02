@@ -1,4 +1,9 @@
 version: 1
+backend:
+  phases:
+    build:
+      commands:
+        - '# Skip backend build'
 frontend:
   phases:
     preBuild:
