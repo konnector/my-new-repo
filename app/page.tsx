@@ -846,7 +846,7 @@ export default function VideoCreator() {
       setProgress('Finalizing...');
 
       const data = await ffmpeg.readFile('output.mp4');
-      const videoBlob = new Blob([data as Uint8Array], { type: 'video/mp4' });
+      const videoBlob = new Blob([new Uint8Array(data as ArrayBuffer)], { type: 'video/mp4' });
       const url = URL.createObjectURL(videoBlob);
 
       setVideoUrl(url);
