@@ -846,7 +846,12 @@ export default function VideoCreator() {
       setProgress('Finalizing...');
 
       const data = await ffmpeg.readFile('output.mp4');
-      const videoBlob = new Blob([data instanceof Uint8Array ? data : new Uint8Array()], { type: 'video/mp4' });
+      // Convert to standard ArrayBuffer to avoid SharedArrayBuffer type issues
+      const uint8Data = data instanceof Uint8Array ? data : new Uint8Array();
+      const standardBuffer = new ArrayBuffer(uint8Data.byteLength);
+      const standardView = new Uint8Array(standardBuffer);
+      standardView.set(uint8Data);
+      const videoBlob = new Blob([standardBuffer], { type: 'video/mp4' });
       const url = URL.createObjectURL(videoBlob);
 
       setVideoUrl(url);
